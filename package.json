@@ -5,17 +5,23 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "dev:css": "npx @tailwindcss/cli -i ./views/input.css -o ./public/output.css --watch",
+    "start": "nodemon app.js & npm run dev:css"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
-    "nodemon": "^3.1.14"
+    "autoprefixer": "^10.6.1",
+    "nodemon": "^3.1.14",
+    "postcss": "^8.5.28",
+    "tailwindcss": "^4.3.3"
   },
   "dependencies": {
+    "@tailwindcss/cli": "^4.3.3",
     "body-parser": "^2.3.0",
+    "ejs": "^6.0.1",
     "express": "^5.2.1"
   }
 }
