@@ -2,7 +2,6 @@
 const fs = require("fs");
 const path = require("path");
 const rootDir = require("../utils/pathUtil");
-const { json } = require("body-parser");
 
 const homeDataPath = path.join(rootDir, "data", "homes.json");
 
