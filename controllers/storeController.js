@@ -38,11 +38,22 @@ exports.getFavouriteList = (req, res, next) => {
   );
 };
 
+exports.postAddToFavourite = (req, res, next) => {
+  console.log("Came to add to Favourite", req.body);
+  res.redirect("/favourites");
+}
+
 exports.getHomeDetails = (req, res, next) => {
   const homeId = req.params.homeId;
-  console.log(homeId);
-    res.render("store/home-detail", {
+  Home.findById(homeId, home=>{
+    if(!home){
+      res.redirect("/homes")
+    } else {
+      res.render("store/home-detail", {
+      home: home,
       pageTitle: "Home Detail",
       currentPage: "home",
     })
+    }
+  })
 };
