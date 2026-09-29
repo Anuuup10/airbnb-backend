@@ -1,39 +1,39 @@
 [
   {
-    "id": "1",
     "houseName": "Antelia",
     "price": "1000",
     "location": "Mumbai",
     "rating": "4.9",
     "photoUrl": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/7d/fc/2f/p-9932-antilia-is-a-lavish.jpg?w=1200&h=1200&s=1",
-    "description": "Best Home in Mumbai City"
+    "description": "Best Home in Mumbai City",
+    "id": "1"
   },
   {
-    "id": "2",
     "houseName": "Burj Khalifa",
     "price": "2000",
     "location": "Dubai",
     "rating": "5",
     "photoUrl": "https://www.egypttoursplus.com/wp-content/uploads/2025/07/Burj-Khalifa-in-Dubai.webp",
-    "description": "Best Home in Dubai"
+    "description": "Best Home in Dubai",
+    "id": "0.9663752669378706"
   },
   {
-    "id": "3",
     "houseName": "Villa",
     "price": "700",
     "location": "Nepal",
     "rating": "4.8",
     "photoUrl": "https://www.villasnepal.com/storage/171/conversions/01KCKSJGKG5QHTF6DVGDEY0CH7-card_avif.webp",
-    "description": "Best Villa in Nepal"
+    "description": "Best Villa in Nepal",
+    "id": "0.7422687397966635"
   },
   {
-    "id": "4",
     "houseName": "Switzerland",
     "price": "1500",
     "location": "Switzerland",
     "rating": "4.9",
     "photoUrl": "https://media.bookmundi.com/uris/switzerland/featured-image-1784287411120.jpg?format=auto&quality=60&width=1920",
-    "description": "Best Home Stay in Switzerland"
+    "description": "Best Home Stay in Switzerland",
+    "id": "0.879846532066435"
   },
   {
     "houseName": "Goa Beach",
@@ -41,7 +41,7 @@
     "location": "Goa",
     "rating": "4.5",
     "photoUrl": "https://cpjlcwamma.cloudimg.io/wp-content/uploads/2026/06/Palolem-Beach.png?width=1180&height=600&func=boundmin&force_format=webp&q=80",
-    "description": "Best home stay at Goa Beach\r\n",
-    "id": "0.019029931242354747"
+    "description": "Best home stay at Goa Beach",
+    "id": "0.8220050993078237"
   }
 ]
