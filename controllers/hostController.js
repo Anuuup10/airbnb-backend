@@ -9,32 +9,33 @@ exports.getAddHome = (req, res, next) => {
 };
 
 exports.getHostHomes = (req, res, next) => {
-  Home.fetchAll((registeredHomes) =>
+  Home.fetchAll().then(([registeredHomes]) => {
     res.render("host/host-home-list", {
       registeredHomes: registeredHomes,
       pageTitle: "Host Homes List",
       currentPage: "host-homes",
-    }),
-  );
+    });
+  });
 };
 
 exports.getEditHome = (req, res, next) => {
   const homeId = req.params.homeId;
-  const editing = req.query.editing === 'true';
+  const editing = req.query.editing === "true";
 
-  Home.findById(homeId, home => {
-    if(!home){
+  Home.findById(homeId).then(([homes]) => {
+    const home = homes[0];
+    if (!home) {
       console.log("Home not found");
       return res.redirect("/host/host-home-list");
     }
     console.log(homeId, editing, home);
-  res.render("host/edit-home", {
-    home: home,
-    pageTitle: "Edit your home",
-    currentPage: "host-homes",
-    editing: editing,
+    res.render("host/edit-home", {
+      home: home,
+      pageTitle: "Edit your home",
+      currentPage: "host-homes",
+      editing: editing,
+    });
   });
-  })
 };
 
 exports.postAddHome = (req, res, next) => {
@@ -62,8 +63,8 @@ exports.postEditHome = (req, res, next) => {
     rating,
     photoUrl,
     description,
+    id,
   );
-  home.id = id;
   home.save();
   res.redirect("/host/host-home-list");
 };
@@ -71,12 +72,11 @@ exports.postEditHome = (req, res, next) => {
 exports.postDeleteHome = (req, res, next) => {
   const homeId = req.params.homeId;
   console.log("Came to Delete", homeId);
-  Home.deleteById(homeId, error => {
-    if(error){
+  Home.deleteById(homeId)
+    .then(() => {
+      res.redirect("/host/host-home-list");
+    })
+    .catch((error) => {
       console.log("Error while deleting", error);
-    }
-    res.redirect("/host/host-home-list");
-  })
+    });
 };
-
-
