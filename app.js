@@ -1,3 +1,7 @@
+// DNS
+const dns = require("dns");
+dns.setServers(["8.8.8.8", "1.1.1.1"]);
+
 // Core Module
 const path = require('path');
 
@@ -9,7 +13,7 @@ const storeRouter = require("./routes/storeRouter")
 const hostRouter = require("./routes/hostRouter")
 const rootDir = require("./utils/pathUtil");
 const errorsController = require('./controllers/error');
-const {mongoConnect} = require('./utils/databaseUtil');
+const { default: mongoose } = require('mongoose');
 
 const app = express();
 
@@ -25,8 +29,13 @@ app.use(express.static(path.join(rootDir, 'public')))
 app.use(errorsController.get404);
 
 const PORT = 3000;
-mongoConnect(() => {
+const DB_PATH = "mongodb+srv://anupchaudhary048_db_user:anupmongodb10@airbnb-cluster.jvicaif.mongodb.net/airbnb?appName=airbnb-cluster";
+
+mongoose.connect(DB_PATH).then(() => {
+  console.log('Connected to Mongo');
   app.listen(PORT, () => {
   console.log(`Server running on address http://localhost:${PORT}`);
 });
+}).catch(err => {
+  console.log("Error while connecting to Mongo", err);
 })
