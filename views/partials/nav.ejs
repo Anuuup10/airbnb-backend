@@ -1,59 +1,69 @@
-<header class="bg-red-500 text-white p-4 shadow-md">
-  <nav class="container mx-auto flex justify-between items-center">
-    <ul class="flex space-x-2 items-center">
-      <li>
-        <a
-          href="/"
-          class="py-2 px-4 rounded-lg transition duration-300 inline-block <%= (typeof currentPage !== 'undefined' && currentPage === 'index') ? 'bg-red-700 font-semibold text-white shadow-inner' : 'hover:bg-red-400 text-white/90 hover:text-white' %>"
-        >airbnb</a>
-      </li>
-      <% if(isLoggedIn) { %>
-          <li>
-            <a
-              href="/homes"
-              class="py-2 px-4 rounded-lg transition duration-300 inline-block <%= (typeof currentPage !== 'undefined' && currentPage === 'home') ? 'bg-red-700 font-semibold text-white shadow-inner' : 'hover:bg-red-400 text-white/90 hover:text-white' %>"
-            >Homes-List</a>
-          </li>
-          <li>
-            <a
-              href="/favourites"
-              class="py-2 px-4 rounded-lg transition duration-300 inline-block <%= (typeof currentPage !== 'undefined' && currentPage === 'favourites') ? 'bg-red-700 font-semibold text-white shadow-inner' : 'hover:bg-red-400 text-white/90 hover:text-white' %>"
-            >Favourites</a>
-          </li>
-          <li>
-            <a
-              href="/bookings"
-              class="py-2 px-4 rounded-lg transition duration-300 inline-block <%= (typeof currentPage !== 'undefined' && currentPage === 'bookings') ? 'bg-red-700 font-semibold text-white shadow-inner' : 'hover:bg-red-400 text-white/90 hover:text-white' %>"
-            >Bookings</a>
-          </li>
-          <li>
-            <a
-              href="/host/host-home-list"
-              class="py-2 px-4 rounded-lg transition duration-300 inline-block <%= (typeof currentPage !== 'undefined' && currentPage === 'host-homes') ? 'bg-red-700 font-semibold text-white shadow-inner' : 'hover:bg-red-400 text-white/90 hover:text-white' %>"
-            >Host Homes</a>
-          </li>
-          <li>
-            <a
-              href="/host/add-home"
-              class="py-2 px-4 rounded-lg transition duration-300 inline-block <%= (typeof currentPage !== 'undefined' && currentPage === 'addHome') ? 'bg-red-700 font-semibold text-white shadow-inner' : 'hover:bg-red-400 text-white/90 hover:text-white' %>"
-            >Add Home</a>
-          </li>
-       <% } %>
-    </ul>
-    <% if(!isLoggedIn) { %>
-      <div>
-        <a
-          href="/login"
-          class="py-2 px-4 rounded-lg transition duration-300 inline-block <%= (typeof currentPage !== 'undefined' && currentPage === 'login') ? 'bg-red-700 font-semibold text-white shadow-inner' : 'hover:bg-red-400 text-white/90 hover:text-white' %>"
-        >Login</a>
+<header
+  class="bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-xs sticky top-0 z-50 transition-all duration-300">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex justify-between items-center">
+    <!-- Brand Logo -->
+    <a href="/" class="flex items-center space-x-2.5 group">
+      <div
+        class="p-2 rounded-2xl bg-rose-50 text-rose-500 group-hover:bg-rose-500 group-hover:text-white transition-all duration-200 shadow-xs">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+          </path>
+        </svg>
       </div>
-    <% } else { %>
-      <form action="/logout" method="POST">
-        <button
-          type="submit"
-          class="py-2 px-4 rounded-lg transition duration-300 inline-block <%= (typeof currentPage !== 'undefined' && currentPage === 'login') ? 'bg-red-700 font-semibold text-white shadow-inner' : 'hover:bg-red-400 text-white/90 hover:text-white' %>"
-        >Logout</button>
-    </form>
-    <% } %>
+      <span
+        class="text-xl font-bold tracking-tight text-slate-900 group-hover:text-rose-500 transition-colors">airbnb</span>
+    </a>
+
+    <!-- Navigation Links -->
+    <div class="hidden md:flex items-center space-x-1.5">
+      <% if(isLoggedIn) { %>
+        <a href="/homes"
+          class="px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition duration-200 <%= (typeof currentPage !== 'undefined' && currentPage === 'home') ? 'bg-rose-50 text-rose-600 font-bold shadow-xs' : 'text-slate-600 hover:text-rose-500 hover:bg-slate-50' %>">
+          Homes List
+        </a>
+        <a href="/favourites"
+          class="px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition duration-200 <%= (typeof currentPage !== 'undefined' && currentPage === 'favourites') ? 'bg-rose-50 text-rose-600 font-bold shadow-xs' : 'text-slate-600 hover:text-rose-500 hover:bg-slate-50' %>">
+          Favourites
+        </a>
+        <a href="/bookings"
+          class="px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition duration-200 <%= (typeof currentPage !== 'undefined' && currentPage === 'bookings') ? 'bg-rose-50 text-rose-600 font-bold shadow-xs' : 'text-slate-600 hover:text-rose-500 hover:bg-slate-50' %>">
+          Bookings
+        </a>
+        <a href="/host/host-home-list"
+          class="px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition duration-200 <%= (typeof currentPage !== 'undefined' && currentPage === 'host-homes') ? 'bg-rose-50 text-rose-600 font-bold shadow-xs' : 'text-slate-600 hover:text-rose-500 hover:bg-slate-50' %>">
+          Host Homes
+        </a>
+        <a href="/host/add-home"
+          class="px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition duration-200 <%= (typeof currentPage !== 'undefined' && currentPage === 'addHome') ? 'bg-rose-50 text-rose-600 font-bold shadow-xs' : 'text-slate-600 hover:text-rose-500 hover:bg-slate-50' %>">
+          Add Home
+        </a>
+        <% } %>
+    </div>
+
+    <!-- Auth Actions -->
+    <div class="flex items-center space-x-2.5">
+      <% if(!isLoggedIn) { %>
+        <a href="/login"
+          class="px-4 py-2 rounded-full text-xs font-semibold text-slate-700 hover:text-rose-500 hover:bg-slate-50 transition duration-200 <%= (typeof currentPage !== 'undefined' && currentPage === 'login') ? 'text-rose-600 font-bold' : '' %>">
+          Login
+        </a>
+        <a href="/signup"
+          class="px-5 py-2.5 rounded-full text-xs font-semibold bg-rose-500 hover:bg-rose-600 active:bg-rose-700 text-white shadow-sm hover:shadow transition duration-200">
+          Sign Up
+        </a>
+        <% } else { %>
+          <form action="/logout" method="POST" class="inline">
+            <button type="submit"
+              class="px-4 py-2 rounded-full text-xs font-semibold text-slate-600 hover:text-rose-600 hover:bg-rose-50 border border-slate-200 hover:border-rose-200 transition duration-200 cursor-pointer flex items-center space-x-1.5">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+              </svg>
+              <span>Logout</span>
+            </button>
+          </form>
+          <% } %>
+    </div>
   </nav>
 </header>

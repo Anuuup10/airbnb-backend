@@ -1,0 +1,163 @@
+<%- include('../partials/head') %>
+  </head>
+  <body class="bg-slate-50 min-h-screen flex flex-col justify-between text-slate-800 font-sans antialiased">
+    <%- include('../partials/nav') %>
+
+    <main class="flex-grow flex items-center justify-center px-4 py-12">
+      <div class="w-full max-w-md bg-white rounded-3xl shadow-xl border border-slate-100 p-8 sm:p-10 transition-all duration-300">
+        <!-- Header -->
+        <div class="text-center mb-8">
+          <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-rose-50 text-rose-500 mb-4 shadow-sm">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
+            </svg>
+          </div>
+          <h1 class="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">Create Account</h1>
+          <p class="text-sm text-slate-500 mt-2">Sign up for an Airbnb account to continue</p>
+        </div>
+
+        <!-- Form -->
+        <form action="/signup" method="POST" class="space-y-5">
+          <!-- Full Name Input -->
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                </svg>
+              </div>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="John Doe"
+                required
+                class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-rose-500/20 focus:border-rose-500 transition duration-200"
+              />
+            </div>
+
+          <!-- Email / Username Input -->
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                </svg>
+              </div>
+              <input
+                type="email"
+                id="username"
+                name="username"
+                placeholder="name@example.com"
+                required
+                class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-rose-500/20 focus:border-rose-500 transition duration-200"
+              />
+            </div>
+
+          <!-- Password Input -->
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                </svg>
+              </div>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="••••••••"
+                required
+                class="w-full pl-10 pr-11 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-rose-500/20 focus:border-rose-500 transition duration-200"
+              />
+              <button
+                type="button"
+                id="togglePassword"
+                class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600 focus:outline-none cursor-pointer"
+                aria-label="Toggle password visibility"
+              >
+                <svg id="eyeIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                </svg>
+              </button>
+            </div>
+
+          <!-- Confirm Password Input -->
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                </svg>
+              </div>
+              <input
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
+                placeholder="••••••••"
+                required
+                class="w-full pl-10 pr-11 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-rose-500/20 focus:border-rose-500 transition duration-200"
+              />
+            </div>
+
+          <!-- User Role & Terms Selection -->
+          <div class="space-y-4 pt-1">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-2">User Type</p>
+              <div class="flex items-center space-x-6">
+                <label for="guest" class="flex items-center cursor-pointer space-x-2 text-sm text-slate-700 hover:text-slate-900 font-medium">
+                  <input type="radio" name="userType" value="guest" id="guest" class="w-4 h-4 text-rose-500 border-slate-300 focus:ring-rose-500/20 accent-rose-500 cursor-pointer" checked />
+                  <span>Guest</span>
+                </label>
+                <label for="host" class="flex items-center cursor-pointer space-x-2 text-sm text-slate-700 hover:text-slate-900 font-medium">
+                  <input type="radio" name="userType" value="host" id="host" class="w-4 h-4 text-rose-500 border-slate-300 focus:ring-rose-500/20 accent-rose-500 cursor-pointer" />
+                  <span>Host</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="flex items-center space-x-2">
+              <input type="checkbox" name="terms" id="terms" required class="w-4 h-4 text-rose-500 border-slate-300 rounded focus:ring-rose-500/20 accent-rose-500 cursor-pointer" />
+              <label for="terms" class="text-xs text-slate-600 cursor-pointer select-none">
+                I agree to the <a href="#" class="text-rose-500 hover:underline font-medium">terms and conditions</a>
+              </label>
+            </div>
+          </div>
+          <!-- Submit Button -->
+          <div class="pt-2">
+            <button
+              type="submit"
+              class="w-full bg-rose-500 hover:bg-rose-600 active:bg-rose-700 text-white font-semibold py-3 px-4 rounded-xl shadow-md hover:shadow-lg transition duration-200 text-sm flex items-center justify-center space-x-2 group cursor-pointer"
+            >
+              <span>Sign Up</span>
+              <svg class="w-4 h-4 transform group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
+            </button>
+          </div>
+        </form>
+
+        <!-- Login Redirect Link -->
+        <div class="mt-6 text-center border-t border-slate-100 pt-5">
+          <p class="text-xs text-slate-500">
+            Already have an account?
+            <a href="/login" class="text-rose-500 hover:text-rose-600 font-semibold ml-1 hover:underline">Log in</a>
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      const togglePassword = document.getElementById('togglePassword');
+      const passwordInput = document.getElementById('password');
+      const confirmPasswordInput = document.getElementById('confirmPassword');
+
+      if (togglePassword && passwordInput) {
+        togglePassword.addEventListener('click', () => {
+          const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+          passwordInput.setAttribute('type', type);
+          if (confirmPasswordInput) {
+            confirmPasswordInput.setAttribute('type', type);
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
