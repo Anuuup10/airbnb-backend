@@ -1,42 +1,59 @@
 <header class="bg-red-500 text-white p-4 shadow-md">
   <nav class="container mx-auto flex justify-between items-center">
-    <ul class="flex space-x-2">
+    <ul class="flex space-x-2 items-center">
       <li>
         <a
           href="/"
           class="py-2 px-4 rounded-lg transition duration-300 inline-block <%= (typeof currentPage !== 'undefined' && currentPage === 'index') ? 'bg-red-700 font-semibold text-white shadow-inner' : 'hover:bg-red-400 text-white/90 hover:text-white' %>"
         >airbnb</a>
       </li>
-      <li>
-        <a
-          href="/homes"
-          class="py-2 px-4 rounded-lg transition duration-300 inline-block <%= (typeof currentPage !== 'undefined' && currentPage === 'home') ? 'bg-red-700 font-semibold text-white shadow-inner' : 'hover:bg-red-400 text-white/90 hover:text-white' %>"
-        >Homes-List</a>
-      </li>
-      <li>
-        <a
-          href="/favourites"
-          class="py-2 px-4 rounded-lg transition duration-300 inline-block <%= (typeof currentPage !== 'undefined' && currentPage === 'favourites') ? 'bg-red-700 font-semibold text-white shadow-inner' : 'hover:bg-red-400 text-white/90 hover:text-white' %>"
-        >Favourites</a>
-      </li>
-      <li>
-        <a
-          href="/bookings"
-          class="py-2 px-4 rounded-lg transition duration-300 inline-block <%= (typeof currentPage !== 'undefined' && currentPage === 'bookings') ? 'bg-red-700 font-semibold text-white shadow-inner' : 'hover:bg-red-400 text-white/90 hover:text-white' %>"
-        >Bookings</a>
-      </li>
-      <li>
-        <a
-          href="/host/host-home-list"
-          class="py-2 px-4 rounded-lg transition duration-300 inline-block <%= (typeof currentPage !== 'undefined' && currentPage === 'host-homes') ? 'bg-red-700 font-semibold text-white shadow-inner' : 'hover:bg-red-400 text-white/90 hover:text-white' %>"
-        >Host Homes</a>
-      </li>
-      <li>
-        <a
-          href="/host/add-home"
-          class="py-2 px-4 rounded-lg transition duration-300 inline-block <%= (typeof currentPage !== 'undefined' && currentPage === 'addHome') ? 'bg-red-700 font-semibold text-white shadow-inner' : 'hover:bg-red-400 text-white/90 hover:text-white' %>"
-        >Add Home</a>
-      </li>
+      <% if(isLoggedIn) { %>
+          <li>
+            <a
+              href="/homes"
+              class="py-2 px-4 rounded-lg transition duration-300 inline-block <%= (typeof currentPage !== 'undefined' && currentPage === 'home') ? 'bg-red-700 font-semibold text-white shadow-inner' : 'hover:bg-red-400 text-white/90 hover:text-white' %>"
+            >Homes-List</a>
+          </li>
+          <li>
+            <a
+              href="/favourites"
+              class="py-2 px-4 rounded-lg transition duration-300 inline-block <%= (typeof currentPage !== 'undefined' && currentPage === 'favourites') ? 'bg-red-700 font-semibold text-white shadow-inner' : 'hover:bg-red-400 text-white/90 hover:text-white' %>"
+            >Favourites</a>
+          </li>
+          <li>
+            <a
+              href="/bookings"
+              class="py-2 px-4 rounded-lg transition duration-300 inline-block <%= (typeof currentPage !== 'undefined' && currentPage === 'bookings') ? 'bg-red-700 font-semibold text-white shadow-inner' : 'hover:bg-red-400 text-white/90 hover:text-white' %>"
+            >Bookings</a>
+          </li>
+          <li>
+            <a
+              href="/host/host-home-list"
+              class="py-2 px-4 rounded-lg transition duration-300 inline-block <%= (typeof currentPage !== 'undefined' && currentPage === 'host-homes') ? 'bg-red-700 font-semibold text-white shadow-inner' : 'hover:bg-red-400 text-white/90 hover:text-white' %>"
+            >Host Homes</a>
+          </li>
+          <li>
+            <a
+              href="/host/add-home"
+              class="py-2 px-4 rounded-lg transition duration-300 inline-block <%= (typeof currentPage !== 'undefined' && currentPage === 'addHome') ? 'bg-red-700 font-semibold text-white shadow-inner' : 'hover:bg-red-400 text-white/90 hover:text-white' %>"
+            >Add Home</a>
+          </li>
+       <% } %>
     </ul>
+    <% if(!isLoggedIn) { %>
+      <div>
+        <a
+          href="/login"
+          class="py-2 px-4 rounded-lg transition duration-300 inline-block <%= (typeof currentPage !== 'undefined' && currentPage === 'login') ? 'bg-red-700 font-semibold text-white shadow-inner' : 'hover:bg-red-400 text-white/90 hover:text-white' %>"
+        >Login</a>
+      </div>
+    <% } else { %>
+      <form action="/logout" method="POST">
+        <button
+          type="submit"
+          class="py-2 px-4 rounded-lg transition duration-300 inline-block <%= (typeof currentPage !== 'undefined' && currentPage === 'login') ? 'bg-red-700 font-semibold text-white shadow-inner' : 'hover:bg-red-400 text-white/90 hover:text-white' %>"
+        >Logout</button>
+    </form>
+    <% } %>
   </nav>
 </header>
