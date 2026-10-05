@@ -4,7 +4,7 @@ const favouriteSchema = mongoose.Schema({
   houseId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Home',
-    requiured: true,
+    required: true,
     unique: true 
   }
 })

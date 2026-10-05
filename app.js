@@ -17,7 +17,7 @@ const hostRouter = require("./routes/hostRouter")
 const authRouter = require('./routes/authRouter');
 const rootDir = require("./utils/pathUtil");
 const errorsController = require('./controllers/error');
-const { default: mongoose } = require('mongoose');
+const mongoose = require('mongoose');
 
 const app = express();
 
@@ -29,7 +29,7 @@ const store = new MongoDBStore({
   collection: 'sessions'
 });
 
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true }));
 
 // session
 app.use(session({
