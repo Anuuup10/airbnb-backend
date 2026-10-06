@@ -18,6 +18,7 @@
 
         <!-- Form -->
         <form action="/login" method="POST" class="space-y-5">
+          <%- include('../partials/errors') %>
           <!-- Email / Username Input -->
           <div>
             <label for="username" class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1.5">Email Address</label>
@@ -29,8 +30,9 @@
               </div>
               <input
                 type="email"
-                id="username"
-                name="username"
+                id="email"
+                name="email"
+                value="<%= typeof oldInput !== 'undefined' && oldInput ? oldInput.email : '' %>"
                 placeholder="name@example.com"
                 required
                 class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-rose-500/20 focus:border-rose-500 transition duration-200"
