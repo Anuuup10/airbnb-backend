@@ -17,9 +17,9 @@
         </div>
 
         <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col md:flex-row">
-          <% if (home.photoUrl && home.photoUrl.trim() !=='' ) { %>
+          <% if (home.photo && home.photo.trim() !=='' ) { %>
             <div class="md:w-1/2 h-64 md:h-auto overflow-hidden bg-gray-100 relative">
-              <img src="<%= home.photoUrl %>" alt="<%= home.houseName %>" class="w-full h-full object-cover" />
+              <img src="<%= home.photo %>" alt="<%= home.houseName %>" class="w-full h-full object-cover" />
             </div>
             <% } %>
 

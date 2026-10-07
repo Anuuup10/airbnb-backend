@@ -21,9 +21,9 @@
               <% registeredHomes.forEach(home=> { %>
                 <div
                   class="bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition duration-300 overflow-hidden flex flex-col justify-between">
-                  <% if (home.photoUrl && home.photoUrl.trim() !=='' ) { %>
+                  <% if (home.photo && home.photo.trim() !=='' ) { %>
                     <div class="h-48 w-full overflow-hidden bg-gray-100">
-                      <img src="<%= home.photoUrl %>" alt="<%= home.houseName %>" class="w-full h-full object-cover" />
+                      <img src="<%= home.photo %>" alt="<%= home.houseName %>" class="w-full h-full object-cover" />
                     </div>
                     <% } %>
 
