@@ -9,6 +9,8 @@ const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
+const mongoose = require('mongoose');
+const multer = require('multer');
 const DB_PATH = "mongodb+srv://anupchaudhary048_db_user:anupmongodb10@airbnb-cluster.jvicaif.mongodb.net/airbnb?appName=airbnb-cluster";
 
 //Local Module
@@ -17,7 +19,7 @@ const hostRouter = require("./routes/hostRouter")
 const authRouter = require('./routes/authRouter');
 const rootDir = require("./utils/pathUtil");
 const errorsController = require('./controllers/error');
-const mongoose = require('mongoose');
+
 
 const app = express();
 
@@ -29,7 +31,31 @@ const store = new MongoDBStore({
   collection: 'sessions'
 });
 
+const randomString = (length) => {
+  const characters = 'abcdefghijklmnopqrstuvwxyz';
+  let result = '';
+  for(let i = 0; i < length; i++) {
+    result = characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+  return result;
+}
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads/');
+  },
+  filename: (req, file, cb) => {
+    cb(null, randomString(10) + '-' + file.originalname);
+  }
+});
+
+const multerOptions = {
+  storage
+};
+
 app.use(express.urlencoded({ extended: true }));
+app.use(multer(multerOptions).single('photo'));
+app.use(express.static(path.join(rootDir, 'public')));
 
 // session
 app.use(session({
@@ -56,8 +82,6 @@ app.use("/host", (req, res, next) => {
   }
 });
 app.use("/host", hostRouter);
-
-app.use(express.static(path.join(rootDir, 'public')))
 
 app.use(errorsController.get404);
 
