@@ -44,7 +44,6 @@
           <div>
             <div class="flex items-center justify-between mb-1.5">
               <label for="password" class="block text-xs font-semibold uppercase tracking-wider text-slate-600">Password</label>
-              <a href="#" class="text-xs text-rose-500 hover:text-rose-600 font-medium hover:underline">Forgot password?</a>
             </div>
             <div class="relative">
               <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
@@ -95,9 +94,30 @@
             </button>
           </div>
         </form>
+        <!-- Login Redirect Link -->
+        <div class="mt-6 text-center border-t border-slate-100 pt-5">
+          <p class="text-xs text-slate-500">
+            Don't have an account yet?
+            <a href="/signup" class="text-rose-500 hover:text-rose-600 font-semibold ml-1 hover:underline">SignUp</a>
+          </p>
+        </div>
       </div>
     </main>
+    <!-- Password visibility -->
+    <script>
+      const togglePassword = document.getElementById('togglePassword');
+      const passwordInput = document.getElementById('password');
+      const confirmPasswordInput = document.getElementById('confirmPassword');
 
-
+      if (togglePassword && passwordInput) {
+        togglePassword.addEventListener('click', () => {
+          const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+          passwordInput.setAttribute('type', type);
+          if (confirmPasswordInput) {
+            confirmPasswordInput.setAttribute('type', type);
+          }
+        });
+      }
+    </script>
   </body>
 </html>

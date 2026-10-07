@@ -8,7 +8,8 @@ exports.getLogin = (req, res, next) => {
     currentPage: "login",
     isLoggedIn: false,
     errors: [],
-    oldInput: {email: ""}
+    oldInput: { email: "" },
+    user: {},
   });
 };
 
@@ -22,23 +23,40 @@ exports.postLogin = async (req, res, next) => {
       isLoggedIn: false,
       errors: ["User does not exists"],
       oldInput: { email },
+      user: {},
     });
   }
 
   const isMatch = await bcrypt.compare(password, user.password);
-  if(!isMatch){
+  if (!isMatch) {
     return res.status(422).render("auth/login", {
       pageTitle: "Login",
       currentPage: "login",
       isLoggedIn: false,
       errors: ["Invalid password"],
       oldInput: { email },
+      user: {},
     });
   }
+   // req.session.isLoggedIn = true;
+  // req.session.user = user;
+  // await req.session.save();
+  // res.redirect("/");
+
   req.session.isLoggedIn = true;
-  req.session.user = user;
-  await req.session.save();
-  res.redirect("/");
+  req.session.user = {
+    _id: user._id.toString(),
+    name: user.name,
+    email: user.email,
+    userType: user.userType,
+  };
+  req.session.save((err) => {
+    if (err) {
+      return next(err);
+    }
+
+    res.redirect("/");
+  });
 };
 
 exports.getSignup = (req, res, next) => {
@@ -53,6 +71,7 @@ exports.getSignup = (req, res, next) => {
       password: "",
       userType: "",
     },
+    user: {},
   });
 };
 
@@ -127,6 +146,7 @@ exports.postSignup = [
           password,
           userType,
         },
+        user: {},
       });
     }
 
@@ -156,6 +176,7 @@ exports.postSignup = [
             password,
             userType,
           },
+          user: {},
         });
       });
   },

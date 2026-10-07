@@ -18,8 +18,11 @@ const userSchema = mongoose.Schema({
     type: String,
     enum: ['guest', 'host'],
     default: 'guest'
-  }
-
+  },
+  favourites: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Home'
+  }]
 });
 
 

@@ -18,27 +18,30 @@
     <!-- Navigation Links -->
     <div class="hidden md:flex items-center space-x-1.5">
       <% if(isLoggedIn) { %>
-        <a href="/homes"
-          class="px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition duration-200 <%= (typeof currentPage !== 'undefined' && currentPage === 'home') ? 'bg-rose-50 text-rose-600 font-bold shadow-xs' : 'text-slate-600 hover:text-rose-500 hover:bg-slate-50' %>">
-          Homes List
-        </a>
-        <a href="/favourites"
-          class="px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition duration-200 <%= (typeof currentPage !== 'undefined' && currentPage === 'favourites') ? 'bg-rose-50 text-rose-600 font-bold shadow-xs' : 'text-slate-600 hover:text-rose-500 hover:bg-slate-50' %>">
-          Favourites
-        </a>
-        <a href="/bookings"
-          class="px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition duration-200 <%= (typeof currentPage !== 'undefined' && currentPage === 'bookings') ? 'bg-rose-50 text-rose-600 font-bold shadow-xs' : 'text-slate-600 hover:text-rose-500 hover:bg-slate-50' %>">
-          Bookings
-        </a>
-        <a href="/host/host-home-list"
-          class="px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition duration-200 <%= (typeof currentPage !== 'undefined' && currentPage === 'host-homes') ? 'bg-rose-50 text-rose-600 font-bold shadow-xs' : 'text-slate-600 hover:text-rose-500 hover:bg-slate-50' %>">
-          Host Homes
-        </a>
-        <a href="/host/add-home"
-          class="px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition duration-200 <%= (typeof currentPage !== 'undefined' && currentPage === 'addHome') ? 'bg-rose-50 text-rose-600 font-bold shadow-xs' : 'text-slate-600 hover:text-rose-500 hover:bg-slate-50' %>">
-          Add Home
-        </a>
+        <% if(user && user.userType === 'guest') { %>
+          <a href="/homes"
+            class="px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition duration-200 <%= (typeof currentPage !== 'undefined' && currentPage === 'home') ? 'bg-rose-50 text-rose-600 font-bold shadow-xs' : 'text-slate-600 hover:text-rose-500 hover:bg-slate-50' %>">
+            Homes List
+          </a>
+          <a href="/favourites"
+            class="px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition duration-200 <%= (typeof currentPage !== 'undefined' && currentPage === 'favourites') ? 'bg-rose-50 text-rose-600 font-bold shadow-xs' : 'text-slate-600 hover:text-rose-500 hover:bg-slate-50' %>">
+            Favourites
+          </a>
+          <a href="/bookings"
+            class="px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition duration-200 <%= (typeof currentPage !== 'undefined' && currentPage === 'bookings') ? 'bg-rose-50 text-rose-600 font-bold shadow-xs' : 'text-slate-600 hover:text-rose-500 hover:bg-slate-50' %>">
+            Bookings
+          </a>
+        <% } else {%>
+          <a href="/host/host-home-list"
+            class="px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition duration-200 <%= (typeof currentPage !== 'undefined' && currentPage === 'host-homes') ? 'bg-rose-50 text-rose-600 font-bold shadow-xs' : 'text-slate-600 hover:text-rose-500 hover:bg-slate-50' %>">
+            Host Homes
+          </a>
+          <a href="/host/add-home"
+            class="px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition duration-200 <%= (typeof currentPage !== 'undefined' && currentPage === 'addHome') ? 'bg-rose-50 text-rose-600 font-bold shadow-xs' : 'text-slate-600 hover:text-rose-500 hover:bg-slate-50' %>">
+            Add Home
+          </a>
         <% } %>
+      <% } %>
     </div>
 
     <!-- Auth Actions -->
