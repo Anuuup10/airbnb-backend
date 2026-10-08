@@ -46,14 +46,7 @@ const randomString = (length) => {
   return result;
 };
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'uploads/');
-  },
-  filename: (req, file, cb) => {
-    cb(null, randomString(10) + '-' + file.originalname);
-  }
-});
+const storage = multer.memoryStorage();
 
 const fileFilter = (req, file, cb) => {
   if(file.mimetype === 'image/png' || file.mimetype === 'image/jpg' || file.mimetype === 'image/jpeg'){
@@ -92,10 +85,14 @@ app.use((req, res, next) => {
 app.use(authRouter);
 app.use(storeRouter);
 app.use("/host", (req, res, next) => {
-  if (req.isLoggedIn) {
-    next()
+  if (
+    req.isLoggedIn &&
+    req.session.user &&
+    req.session.user.userType === "host"
+  ) {
+    next();
   } else {
-    res.redirect('/login')
+    res.redirect("/login");
   }
 });
 app.use("/host", hostRouter);

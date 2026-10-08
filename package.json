@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-  "dev": "nodemon app.js",
-  "dev:css": "npx @tailwindcss/cli -i ./views/input.css -o ./public/output.css --watch",
-  "start": "node app.js"
-},
+    "dev": "nodemon app.js",
+    "dev:css": "npx @tailwindcss/cli -i ./views/input.css -o ./public/output.css --watch",
+    "start": "node app.js"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -22,6 +22,7 @@
     "@tailwindcss/cli": "^4.3.3",
     "bcrypt": "^6.0.0",
     "body-parser": "^2.3.0",
+    "cloudinary": "^2.11.0",
     "connect-mongodb-session": "^5.0.0",
     "dotenv": "^18.0.6",
     "ejs": "^6.0.1",
