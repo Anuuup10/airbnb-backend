@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev:css": "npx @tailwindcss/cli -i ./views/input.css -o ./public/output.css --watch",
-    "start": "nodemon app.js & npm run dev:css"
-  },
+  "dev": "nodemon app.js",
+  "dev:css": "npx @tailwindcss/cli -i ./views/input.css -o ./public/output.css --watch",
+  "start": "node app.js"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",

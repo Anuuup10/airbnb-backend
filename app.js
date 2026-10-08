@@ -36,11 +36,15 @@ const store = new MongoDBStore({
 const randomString = (length) => {
   const characters = 'abcdefghijklmnopqrstuvwxyz';
   let result = '';
-  for(let i = 0; i < length; i++) {
-    result = characters.charAt(Math.floor(Math.random() * characters.length));
+
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(
+      Math.floor(Math.random() * characters.length)
+    );
   }
+
   return result;
-}
+};
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -98,14 +102,24 @@ app.use("/host", hostRouter);
 
 app.use(errorsController.get404);
 
-const PORT = 3000;
+// Localhost
+// const PORT = 3000;
+// mongoose.connect(DB_PATH).then(() => {
+//   console.log('Connected to Mongo');
+//   app.listen(PORT, () => {
+//     console.log(`Server running on address http://localhost:${PORT}`);
+//   });
+// }).catch(err => {
+//   console.log("Error while connecting to Mongo", err);
+// })
 
-
-mongoose.connect(DB_PATH).then(() => {
-  console.log('Connected to Mongo');
-  app.listen(PORT, () => {
-    console.log(`Server running on address http://localhost:${PORT}`);
+// Vercel
+mongoose.connect(DB_PATH)
+  .then(() => {
+    console.log('Connected to Mongo');
+  })
+  .catch(err => {
+    console.log('Error while connecting to Mongo', err);
   });
-}).catch(err => {
-  console.log("Error while connecting to Mongo", err);
-})
+
+module.exports = app;
