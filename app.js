@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 // DNS
 const dns = require("dns");
 dns.setServers(["8.8.8.8", "1.1.1.1"]);
@@ -11,7 +13,7 @@ const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
 const mongoose = require('mongoose');
 const multer = require('multer');
-const DB_PATH = "mongodb+srv://anupchaudhary048_db_user:anupmongodb10@airbnb-cluster.jvicaif.mongodb.net/airbnb?appName=airbnb-cluster";
+const DB_PATH = process.env.MONGO_URI;
 
 //Local Module
 const storeRouter = require("./routes/storeRouter")
