@@ -26,7 +26,7 @@ const errorsController = require('./controllers/error');
 const app = express();
 
 app.set('view engine', 'ejs');
-app.set('views', 'views');
+app.set('views', path.join(rootDir, 'views'));
 
 const store = new MongoDBStore({
   uri: DB_PATH,
